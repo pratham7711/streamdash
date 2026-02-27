@@ -57,7 +57,7 @@ export function EventFeed({ events }: EventFeedProps) {
   }, [events]);
 
   return (
-    <div className="card flex flex-col" style={{ height: '420px' }}>
+    <div className="card flex flex-col h-64 md:h-[420px]">
       <div className="flex items-center justify-between px-4 py-3 border-b border-slate-800">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-200 tracking-wider uppercase">Live Event Feed</span>
@@ -87,7 +87,7 @@ export function EventFeed({ events }: EventFeedProps) {
                   <span className="text-slate-500 flex-1">{formatEventDetails(event)}</span>
                 </div>
               </div>
-              <span className="text-slate-600 flex-shrink-0 font-mono">{formatTime(event.timestamp)}</span>
+              <span className="text-slate-600 flex-shrink-0 font-mono hidden sm:block">{formatTime(event.timestamp)}</span>
             </motion.div>
           ))}
         </AnimatePresence>

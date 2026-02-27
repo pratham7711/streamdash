@@ -49,7 +49,7 @@ export function StreamChart({ title, data, color, gradientId, unit, active = tru
         </div>
       </div>
 
-      <div className="h-32">
+      <div className="h-[200px] md:h-32">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 4, right: 4, left: -30, bottom: 0 }}>
             <defs>

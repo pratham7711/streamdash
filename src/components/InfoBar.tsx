@@ -65,30 +65,31 @@ export function InfoBar({ connected, activeStreams }: InfoBarProps) {
   return (
     <div className="border-b border-cyan-500/10 bg-slate-950/60 backdrop-blur-sm">
       {/* Compact bar */}
-      <div className="max-w-[1800px] mx-auto px-6 py-2 flex items-center justify-between gap-4 flex-wrap">
+      <div className="max-w-[1800px] mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-2 sm:gap-4 flex-wrap">
         {/* Left: status */}
-        <div className="flex items-center gap-3 text-xs text-slate-400 font-mono flex-wrap">
+        <div className="flex items-center gap-2 sm:gap-3 text-xs text-slate-400 font-mono flex-wrap">
           <span className="flex items-center gap-1.5">
             <span className={`inline-block w-1.5 h-1.5 rounded-full ${connected ? 'bg-cyan-400 pulse-dot' : 'bg-slate-600'}`} />
             <span className={connected ? 'text-cyan-300' : 'text-slate-500'}>
-              {connected ? 'Streaming live data' : 'Connecting...'}
+              {connected ? 'Live' : 'Connecting...'}
             </span>
           </span>
-          <span className="text-slate-700">·</span>
-          <span><span className="text-slate-300">{activeStreams}</span> / 4 active channels</span>
-          <span className="text-slate-700">·</span>
-          <span>WebSocket <span className={connected ? 'text-green-400' : 'text-yellow-400'}>{connected ? 'connected' : 'reconnecting'}</span></span>
+          <span className="text-slate-700 hidden sm:inline">·</span>
+          <span className="hidden sm:inline"><span className="text-slate-300">{activeStreams}</span> / 4 channels</span>
+          <span className="text-slate-700 hidden sm:inline">·</span>
+          <span className="hidden sm:inline">WS <span className={connected ? 'text-green-400' : 'text-yellow-400'}>{connected ? 'ok' : 'reconnecting'}</span></span>
+          <span className="sm:hidden text-slate-600 text-[10px]">{activeStreams}/4 active</span>
         </div>
 
         {/* Right: badges + toggle */}
-        <div className="flex items-center gap-2 flex-wrap">
-          {TECH_BADGES.map(b => (
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+          {TECH_BADGES.map((b, idx) => (
             <span
               key={b.label}
-              className={`border rounded px-2 py-0.5 text-[10px] font-mono ${b.color}`}
+              className={`border rounded px-2 py-0.5 text-[10px] font-mono ${b.color} ${idx >= 3 ? 'hidden sm:inline-flex' : ''}`}
             >
               {b.label}
-              <span className="text-slate-600 ml-1">{b.sublabel}</span>
+              <span className="text-slate-600 ml-1 hidden sm:inline">{b.sublabel}</span>
             </span>
           ))}
           <button
@@ -115,7 +116,7 @@ export function InfoBar({ connected, activeStreams }: InfoBarProps) {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="max-w-[1800px] mx-auto px-6 pb-5 pt-2 border-t border-slate-800/50">
+            <div className="max-w-[1800px] mx-auto px-3 sm:px-6 pb-4 sm:pb-5 pt-2 border-t border-slate-800/50">
               {/* Header */}
               <div className="mb-4">
                 <div className="text-[10px] text-slate-500 font-mono uppercase tracking-widest mb-1">About</div>

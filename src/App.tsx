@@ -61,7 +61,7 @@ export default function App() {
     <div className="min-h-screen grid-bg">
       {/* Header */}
       <header className="border-b border-cyan-500/10 bg-slate-950/80 backdrop-blur-lg sticky top-0 z-50">
-        <div className="max-w-[1800px] mx-auto px-6 py-3 flex items-center justify-between">
+        <div className="max-w-[1800px] mx-auto px-3 sm:px-6 py-2 sm:py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-8 h-8 bg-cyan-500/20 rounded-lg flex items-center justify-center border border-cyan-500/30">
@@ -71,7 +71,7 @@ export default function App() {
             </div>
             <div>
               <h1 className="text-sm font-bold text-white tracking-widest uppercase">StreamDash</h1>
-              <p className="text-xs text-slate-500 leading-none">Real-Time Event Stream Monitor</p>
+              <p className="text-[10px] sm:text-xs text-slate-500 leading-none hidden sm:block">Real-Time Event Stream Monitor</p>
             </div>
           </div>
 
@@ -87,7 +87,7 @@ export default function App() {
       {/* Info Bar */}
       <InfoBar connected={connected} activeStreams={activeStreams} />
 
-      <main className="max-w-[1800px] mx-auto px-6 py-6 space-y-6">
+      <main className="max-w-[1800px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Stat Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
@@ -192,8 +192,8 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/50 mt-6 py-4">
-        <div className="max-w-[1800px] mx-auto px-6 text-xs text-slate-600 flex items-center justify-between">
+      <footer className="border-t border-slate-800/50 mt-4 sm:mt-6 py-3 sm:py-4">
+        <div className="max-w-[1800px] mx-auto px-3 sm:px-6 text-xs text-slate-600 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-0">
           <span>STREAMDASH v1.0.0 — Real-time Kafka-like data streaming</span>
           <span className="font-mono">ws://localhost:8080</span>
         </div>

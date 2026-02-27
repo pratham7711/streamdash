@@ -46,7 +46,7 @@ export function StatCard({ label, value, unit, icon, accent, subtitle }: StatCar
 
   return (
     <motion.div
-      className={`card p-5 ${a.glow} relative overflow-hidden`}
+      className={`card p-3 sm:p-5 ${a.glow} relative overflow-hidden`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -56,12 +56,12 @@ export function StatCard({ label, value, unit, icon, accent, subtitle }: StatCar
         <div className="scan-line h-full w-1/3 absolute top-0" />
       </div>
 
-      <div className="flex items-start justify-between mb-3">
-        <span className="text-2xl">{icon}</span>
+      <div className="flex items-start justify-between mb-2 sm:mb-3">
+        <span className="text-xl sm:text-2xl">{icon}</span>
         <div className={`w-2 h-2 rounded-full ${a.text.replace('text', 'bg')} pulse-dot`} />
       </div>
 
-      <div className={`text-3xl font-bold ${a.text} mb-1 tabular-nums`}>
+      <div className={`text-2xl sm:text-3xl font-bold ${a.text} mb-1 tabular-nums`}>
         <motion.span
           key={String(value)}
           initial={{ opacity: 0.5 }}
