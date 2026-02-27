@@ -7,6 +7,61 @@ import { EventFeed } from './components/EventFeed';
 import { StreamStatus } from './components/StreamStatus';
 import { InfoBar } from './components/InfoBar';
 
+/** Skeleton shown before the first WebSocket payload arrives */
+function DashboardSkeleton() {
+  return (
+    <main className="max-w-[1800px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+      <style>{`
+        @keyframes dashShimmer {
+          0%   { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+        .dash-skeleton {
+          background: linear-gradient(
+            90deg,
+            rgba(255,255,255,0.04) 25%,
+            rgba(6,182,212,0.08) 50%,
+            rgba(255,255,255,0.04) 75%
+          );
+          background-size: 400% 100%;
+          animation: dashShimmer 1.8s ease-in-out infinite;
+          border-radius: 8px;
+        }
+      `}</style>
+
+      {/* Stat cards skeleton */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="dash-skeleton" style={{ height: 100 }} />
+        ))}
+      </div>
+
+      {/* Main chart grid skeleton */}
+      <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
+        <div className="xl:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="dash-skeleton" style={{ height: 180 }} />
+          ))}
+        </div>
+        <div className="xl:col-span-1 dash-skeleton" style={{ height: 400 }} />
+      </div>
+
+      {/* Metrics row skeleton */}
+      <div>
+        <div className="dash-skeleton" style={{ height: 16, width: 140, marginBottom: 12 }} />
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="dash-skeleton" style={{ height: 120 }} />
+          ))}
+        </div>
+      </div>
+
+      {/* Event feed skeleton */}
+      <div className="dash-skeleton" style={{ height: 200 }} />
+    </main>
+  );
+}
+
 const STREAM_CHART_CONFIG = [
   { key: 'orders' as const, title: 'Orders Stream', color: '#22d3ee', gradientId: 'ordersGrad', unit: '$' },
   { key: 'users' as const, title: 'Users Stream', color: '#c084fc', gradientId: 'usersGrad', unit: 'ev' },
@@ -87,7 +142,13 @@ export default function App() {
       {/* Info Bar */}
       <InfoBar connected={connected} activeStreams={activeStreams} />
 
-      <main className="max-w-[1800px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+      {/* Show skeleton placeholders until the first WebSocket message arrives */}
+      {!latestPayload && <DashboardSkeleton />}
+
+      <main
+        className="max-w-[1800px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6"
+        style={!latestPayload ? { display: 'none' } : undefined}
+      >
         {/* Stat Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
