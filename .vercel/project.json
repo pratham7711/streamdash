@@ -1,1 +1,16 @@
-{"projectId":"prj_7SjBuLpUKTBKOQ30aSbOBUaqiVB8","orgId":"team_SkPbuvE2AA6LBViXnxJSIupd","projectName":"streamdash"}
+{
+  "projectId": "prj_7SjBuLpUKTBKOQ30aSbOBUaqiVB8",
+  "orgId": "team_SkPbuvE2AA6LBViXnxJSIupd",
+  "projectName": "streamdash",
+  "settings": {
+    "createdAt": 1772199017348,
+    "framework": "vite",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
