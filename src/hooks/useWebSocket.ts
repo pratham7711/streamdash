@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import type { ServerPayload, StreamEvent, ChartHistory, MetricsHistory, StreamStat } from '../types';
 
-const WS_URL = 'ws://localhost:8080';
+const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8080';
 const MAX_HISTORY = 60;
 const MAX_EVENTS = 80;
 

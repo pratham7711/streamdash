@@ -1,6 +1,6 @@
 import { WebSocketServer } from 'ws';
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const wss = new WebSocketServer({ port: PORT });
 
 const streams = ['orders', 'users', 'system', 'errors'];
@@ -137,4 +137,4 @@ wss.on('connection', (ws, req) => {
   });
 });
 
-console.log(`STREAMDASH WebSocket server running on ws://localhost:${PORT}`);
+console.log(`STREAMDASH WebSocket server running on port ${PORT}`);

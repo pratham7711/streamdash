@@ -256,7 +256,7 @@ export default function App() {
       <footer className="border-t border-slate-800/50 mt-4 sm:mt-6 py-3 sm:py-4">
         <div className="max-w-[1800px] mx-auto px-3 sm:px-6 text-xs text-slate-600 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-0">
           <span>STREAMDASH v1.0.0 — Real-time Kafka-like data streaming</span>
-          <span className="font-mono">ws://localhost:8080</span>
+          <span className="font-mono">{import.meta.env.VITE_WS_URL || 'ws://localhost:8080'}</span>
         </div>
       </footer>
     </div>
