@@ -1,7 +1,14 @@
 import { WebSocketServer } from 'ws';
+import { createServer } from 'http';
 
 const PORT = process.env.PORT || 8080;
-const wss = new WebSocketServer({ port: PORT });
+
+const server = createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ status: 'ok', service: 'streamdash-ws' }));
+});
+
+const wss = new WebSocketServer({ server });
 
 const streams = ['orders', 'users', 'system', 'errors'];
 
@@ -137,4 +144,6 @@ wss.on('connection', (ws, req) => {
   });
 });
 
-console.log(`STREAMDASH WebSocket server running on port ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`STREAMDASH WebSocket server running on port ${PORT}`);
+});
